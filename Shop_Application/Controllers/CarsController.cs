@@ -66,7 +66,7 @@ namespace Shop_Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription", car.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "NameCategory", car.CategoryId);
             return View(car);
         }
 

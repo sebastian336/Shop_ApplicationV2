@@ -27,6 +27,7 @@ namespace Shop_Application.Models
         public int PriceOfOrder { get; set; }
 
         List<PlacementOfOrder> PlacementsOfOrder { get; set; }
+        public virtual ICollection<PlacementOfOrder>? PlacementOfOrders { get; set; }
 
     }
    

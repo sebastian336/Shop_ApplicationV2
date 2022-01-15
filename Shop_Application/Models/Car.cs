@@ -25,5 +25,7 @@ namespace Shop_Application.Models
         [ForeignKey("Category")]
         public virtual int CategoryId { get; set; }
         public virtual Category? Category { get; set; }
+
+        public virtual ICollection<PlacementOfOrder>? PlacementOfOrders { get; set; }
     }
 }
