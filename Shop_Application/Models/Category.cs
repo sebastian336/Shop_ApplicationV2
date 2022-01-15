@@ -6,7 +6,7 @@ namespace Shop_Application.Models
     public class Category
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Wprowadz nazwe kategorii")]
         [StringLength(100)]
         public string NameCategory { get; set; }
@@ -15,7 +15,7 @@ namespace Shop_Application.Models
         public string CategoryDescription { get; set; }
         public string NameFileIcon { get; set; }
 
-     //   public virtual ICollection<Car> Cars { get; set; }
+       public virtual ICollection<Car>? Cars { get; set; }
 
     }
 }

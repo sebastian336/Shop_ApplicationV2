@@ -6,8 +6,8 @@ namespace Shop_Application.Models
     public class Car
     {
         [Key]
-        public int CarId { get; set; }
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
+        
         [Required(ErrorMessage = "Wprowadz marke auta")]
         [StringLength(100)]
         public string CarMark { get; set; }
@@ -22,7 +22,8 @@ namespace Shop_Application.Models
         public int PriceOfCar { get; set; }
         public bool WearOfCar { get; set; }
         public bool Hide { get; set; }
-        //[ForeignKey("Category")]
-        public virtual Category Category { get; set; }
+        [ForeignKey("Category")]
+        public virtual int CategoryId { get; set; }
+        public virtual Category? Category { get; set; }
     }
 }

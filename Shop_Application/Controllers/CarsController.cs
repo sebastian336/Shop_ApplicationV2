@@ -37,7 +37,7 @@ namespace Shop_Application.Controllers
 
             var car = await _context.Car
                 .Include(c => c.Category)
-                .FirstOrDefaultAsync(m => m.CarId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (car == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace Shop_Application.Controllers
         // GET: Cars/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryDescription");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarId,CategoryId,CarMark,CarModel,YearOfProduction,NameOfPicture,CarDescription,PriceOfCar,WearOfCar,Hide")] Car car)
+        public async Task<IActionResult> Create([Bind("Id,CarMark,CarModel,YearOfProduction,NameOfPicture,CarDescription,PriceOfCar,WearOfCar,Hide,CategoryId")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Shop_Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryDescription", car.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription", car.CategoryId);
             return View(car);
         }
 
@@ -83,7 +83,7 @@ namespace Shop_Application.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryDescription", car.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription", car.CategoryId);
             return View(car);
         }
 
@@ -92,9 +92,9 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CarId,CategoryId,CarMark,CarModel,YearOfProduction,NameOfPicture,CarDescription,PriceOfCar,WearOfCar,Hide")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CarMark,CarModel,YearOfProduction,NameOfPicture,CarDescription,PriceOfCar,WearOfCar,Hide,CategoryId")] Car car)
         {
-            if (id != car.CarId)
+            if (id != car.Id)
             {
                 return NotFound();
             }
@@ -108,7 +108,7 @@ namespace Shop_Application.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarExists(car.CarId))
+                    if (!CarExists(car.Id))
                     {
                         return NotFound();
                     }
@@ -119,7 +119,7 @@ namespace Shop_Application.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryDescription", car.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription", car.CategoryId);
             return View(car);
         }
 
@@ -133,7 +133,7 @@ namespace Shop_Application.Controllers
 
             var car = await _context.Car
                 .Include(c => c.Category)
-                .FirstOrDefaultAsync(m => m.CarId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (car == null)
             {
                 return NotFound();
@@ -155,7 +155,7 @@ namespace Shop_Application.Controllers
 
         private bool CarExists(int id)
         {
-            return _context.Car.Any(e => e.CarId == id);
+            return _context.Car.Any(e => e.Id == id);
         }
     }
 }

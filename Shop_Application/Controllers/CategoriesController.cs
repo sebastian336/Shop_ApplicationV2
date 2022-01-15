@@ -35,7 +35,7 @@ namespace Shop_Application.Controllers
             }
 
             var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NameCategory,CategoryDescription,NameFileIcon")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,NameCategory,CategoryDescription,NameFileIcon")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -87,9 +87,9 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NameCategory,CategoryDescription,NameFileIcon")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameCategory,CategoryDescription,NameFileIcon")] Category category)
         {
-            if (id != category.CategoryId)
+            if (id != category.Id)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace Shop_Application.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.CategoryId))
+                    if (!CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -126,7 +126,7 @@ namespace Shop_Application.Controllers
             }
 
             var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
                 return NotFound();
@@ -148,7 +148,7 @@ namespace Shop_Application.Controllers
 
         private bool CategoryExists(int id)
         {
-            return _context.Category.Any(e => e.CategoryId == id);
+            return _context.Category.Any(e => e.Id == id);
         }
     }
 }

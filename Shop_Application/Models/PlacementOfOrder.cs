@@ -1,8 +1,11 @@
-﻿namespace Shop_Application.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Shop_Application.Models
 {
     public class PlacementOfOrder
     {
-        public int PlacementOfOrderId { get; set; }
+        [Key]
+        public int Id { get; set; }
         public int OrderId { get; set; }
         public int CarId { get; set; }
         public int Quantity { get; set; }

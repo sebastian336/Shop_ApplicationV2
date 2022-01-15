@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop_Application.Data;
 
@@ -11,9 +12,10 @@ using Shop_Application.Data;
 namespace Shop_Application.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220115194004_nap6")]
+    partial class nap6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -431,7 +433,7 @@ namespace Shop_Application.Data.Migrations
             modelBuilder.Entity("Shop_Application.Models.Car", b =>
                 {
                     b.HasOne("Shop_Application.Models.Category", "Category")
-                        .WithMany("Cars")
+                        .WithMany("Car")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -460,7 +462,7 @@ namespace Shop_Application.Data.Migrations
 
             modelBuilder.Entity("Shop_Application.Models.Category", b =>
                 {
-                    b.Navigation("Cars");
+                    b.Navigation("Car");
                 });
 #pragma warning restore 612, 618
         }

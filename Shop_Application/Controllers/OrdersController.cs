@@ -35,7 +35,7 @@ namespace Shop_Application.Controllers
             }
 
             var order = await _context.Order
-                .FirstOrDefaultAsync(m => m.OrderId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,NameCustomer,SurnameCustomer,City,Street,Phone,Comment,DateOfAdd,PriceOfOrder")] Order order)
+        public async Task<IActionResult> Create([Bind("Id,NameCustomer,SurnameCustomer,City,Street,Phone,Comment,DateOfAdd,PriceOfOrder")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -87,9 +87,9 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,NameCustomer,SurnameCustomer,City,Street,Phone,Comment,DateOfAdd,PriceOfOrder")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameCustomer,SurnameCustomer,City,Street,Phone,Comment,DateOfAdd,PriceOfOrder")] Order order)
         {
-            if (id != order.OrderId)
+            if (id != order.Id)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace Shop_Application.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OrderExists(order.OrderId))
+                    if (!OrderExists(order.Id))
                     {
                         return NotFound();
                     }
@@ -126,7 +126,7 @@ namespace Shop_Application.Controllers
             }
 
             var order = await _context.Order
-                .FirstOrDefaultAsync(m => m.OrderId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
                 return NotFound();
@@ -148,7 +148,7 @@ namespace Shop_Application.Controllers
 
         private bool OrderExists(int id)
         {
-            return _context.Order.Any(e => e.OrderId == id);
+            return _context.Order.Any(e => e.Id == id);
         }
     }
 }

@@ -4,7 +4,8 @@ namespace Shop_Application.Models
 {
     public class Order
     {
-        public int OrderId { get; set; }
+        [Key]
+        public int Id { get; set; }
         [Required(ErrorMessage = "Wprowadz imie")]
         [StringLength(20)]
         public string NameCustomer { get; set; }
