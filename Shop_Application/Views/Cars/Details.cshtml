@@ -1,0 +1,72 @@
+﻿@model Shop_Application.Models.Car
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CarMark)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CarMark)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CarModel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CarModel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YearOfProduction)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YearOfProduction)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameOfPicture)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameOfPicture)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CarDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CarDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PriceOfCar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PriceOfCar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WearOfCar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WearOfCar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hide)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hide)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.CategoryDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CarId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
