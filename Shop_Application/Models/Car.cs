@@ -27,5 +27,6 @@ namespace Shop_Application.Models
         public virtual Category? Category { get; set; }
 
         public virtual ICollection<PlacementOfOrder>? PlacementOfOrders { get; set; }
+        public virtual ICollection<Order>? Orders { get; set; }
     }
 }

@@ -34,6 +34,9 @@
                 @Html.DisplayNameFor(model => model.DateOfAdd)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Car)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PriceOfOrder)
             </th>
             <th></th>
@@ -62,6 +65,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfAdd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.CarDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PriceOfOrder)

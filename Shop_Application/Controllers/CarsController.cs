@@ -49,7 +49,7 @@ namespace Shop_Application.Controllers
         // GET: Cars/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "NameCategory");
             return View();
         }
 
@@ -62,6 +62,7 @@ namespace Shop_Application.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(car);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
