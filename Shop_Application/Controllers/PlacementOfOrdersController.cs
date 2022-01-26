@@ -23,7 +23,7 @@ namespace Shop_Application.Controllers
         // GET: PlacementOfOrders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.PlacementOfOrder.Include(p => p.Car).Include(p => p.Order);
+            var applicationDbContext = _context.PlacementOfOrder.Include(p => p.Order);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,7 +36,6 @@ namespace Shop_Application.Controllers
             }
 
             var placementOfOrder = await _context.PlacementOfOrder
-                .Include(p => p.Car)
                 .Include(p => p.Order)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (placementOfOrder == null)
@@ -50,7 +49,6 @@ namespace Shop_Application.Controllers
         // GET: PlacementOfOrders/Create
         public IActionResult Create()
         {
-            ViewData["CarId"] = new SelectList(_context.Car, "Id", "CarDescription");
             ViewData["OrderId"] = new SelectList(_context.Order, "Id", "City");
             return View();
         }
@@ -60,7 +58,7 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OrderId,CarId,Quantity,PriceOfBuy")] PlacementOfOrder placementOfOrder)
+        public async Task<IActionResult> Create([Bind("Id,PriceOfBuy,OrderId")] PlacementOfOrder placementOfOrder)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +66,6 @@ namespace Shop_Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarId"] = new SelectList(_context.Car, "Id", "CarDescription", placementOfOrder.CarId);
             ViewData["OrderId"] = new SelectList(_context.Order, "Id", "City", placementOfOrder.OrderId);
             return View(placementOfOrder);
         }
@@ -86,7 +83,6 @@ namespace Shop_Application.Controllers
             {
                 return NotFound();
             }
-            ViewData["CarId"] = new SelectList(_context.Car, "Id", "CarDescription", placementOfOrder.CarId);
             ViewData["OrderId"] = new SelectList(_context.Order, "Id", "City", placementOfOrder.OrderId);
             return View(placementOfOrder);
         }
@@ -96,7 +92,7 @@ namespace Shop_Application.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,OrderId,CarId,Quantity,PriceOfBuy")] PlacementOfOrder placementOfOrder)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceOfBuy,OrderId")] PlacementOfOrder placementOfOrder)
         {
             if (id != placementOfOrder.Id)
             {
@@ -123,7 +119,6 @@ namespace Shop_Application.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarId"] = new SelectList(_context.Car, "Id", "CarDescription", placementOfOrder.CarId);
             ViewData["OrderId"] = new SelectList(_context.Order, "Id", "City", placementOfOrder.OrderId);
             return View(placementOfOrder);
         }
@@ -137,7 +132,6 @@ namespace Shop_Application.Controllers
             }
 
             var placementOfOrder = await _context.PlacementOfOrder
-                .Include(p => p.Car)
                 .Include(p => p.Order)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (placementOfOrder == null)

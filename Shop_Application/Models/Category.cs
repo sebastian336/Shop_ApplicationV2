@@ -13,7 +13,7 @@ namespace Shop_Application.Models
         [Required(ErrorMessage = "Wprowadz opis kategorii")]
         [StringLength(2000)]
         public string CategoryDescription { get; set; }
-        public string NameFileIcon { get; set; }
+     
 
        public virtual ICollection<Car>? Cars { get; set; }
 

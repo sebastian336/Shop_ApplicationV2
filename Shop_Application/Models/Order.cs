@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shop_Application.Models
 {
@@ -23,7 +24,11 @@ namespace Shop_Application.Models
         public string Phone { get; set; }
         public string Comment { get; set; }
         public DateTime DateOfAdd { get; set; }
-        
+
+        [ForeignKey("Car")]
+        public virtual int CarId { get; set; }
+        public virtual Car? Car { get; set; }
+
         public int PriceOfOrder { get; set; }
 
         List<PlacementOfOrder> PlacementsOfOrder { get; set; }
