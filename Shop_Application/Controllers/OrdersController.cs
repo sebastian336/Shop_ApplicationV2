@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -47,10 +48,15 @@ namespace Shop_Application.Controllers
         }
 
         // GET: Orders/Create
-        public IActionResult Create()
+        public IActionResult Create(string car)
         {
-            ViewData["CarId"] = new SelectList(_context.Car, "Id", "CarMark");           
-            return View();
+            int.TryParse(car, out int iCarId);
+            ViewData["Cars"] = new SelectList(_context.Car, "Id", "CarMark");
+            Order order = new Order();
+            order.Car = _context.Car.FirstOrDefault(Car => Car.Id == iCarId);
+            order.CarId = iCarId;
+            order.PriceOfOrder = order.Car.PriceOfCar;
+            return View(order);
         }
 
         // POST: Orders/Create
@@ -60,7 +66,11 @@ namespace Shop_Application.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,NameCustomer,SurnameCustomer,City,Street,Phone,Comment,DateOfAdd,CarId,PriceOfOrder")] Order order)
         {
-           
+
+            var CarId = _context.Car.FirstOrDefault(Car => Car.Id == order.CarId);
+            //  order.CarId = CarId;
+            Console.WriteLine(1);
+            order.PriceOfOrder = 444;
             if (ModelState.IsValid)
             {
                 
@@ -70,10 +80,11 @@ namespace Shop_Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarId"] = new SelectList(_context.Car, "Id", "CarMark", order.CarId);
+            ViewData["Cars"] = new SelectList(_context.Car, "Id", "CarMark", order.CarId);
+            ViewData["PriceOfOrder"] = 5;
+
             return View(order);
-            
-             
+
         }
 
         // GET: Orders/Edit/5
