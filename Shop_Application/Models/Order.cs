@@ -23,15 +23,15 @@ namespace Shop_Application.Models
         [StringLength(100)]
         public string Phone { get; set; }
         public string Comment { get; set; }
-        public DateTime DateOfAdd { get; set; }
+        public DateTime DateOfAdd { get; set; } = DateTime.Now;
 
         [ForeignKey("Car")]
         public virtual int CarId { get; set; }
         public virtual Car? Car { get; set; }
 
-        public int PriceOfOrder = 10;
+        public int PriceOfOrder { get; set; }
 
-        List<PlacementOfOrder> PlacementsOfOrder { get; set; }
+    List<PlacementOfOrder> PlacementsOfOrder { get; set; }
         public virtual ICollection<PlacementOfOrder>? PlacementOfOrders { get; set; }
 
     }

@@ -67,10 +67,9 @@ namespace Shop_Application.Controllers
         public async Task<IActionResult> Create([Bind("Id,NameCustomer,SurnameCustomer,City,Street,Phone,Comment,DateOfAdd,CarId,PriceOfOrder")] Order order)
         {
 
-            var CarId = _context.Car.FirstOrDefault(Car => Car.Id == order.CarId);
-            //  order.CarId = CarId;
+            var CarId = _context.Car.FirstOrDefault(Car => Car.Id == order.CarId);          
             Console.WriteLine(1);
-            order.PriceOfOrder = 444;
+           
             if (ModelState.IsValid)
             {
                 
@@ -81,7 +80,7 @@ namespace Shop_Application.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Cars"] = new SelectList(_context.Car, "Id", "CarMark", order.CarId);
-            ViewData["PriceOfOrder"] = 5;
+           
 
             return View(order);
 
