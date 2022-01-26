@@ -29,7 +29,7 @@ namespace Shop_Application.Models
         public virtual int CarId { get; set; }
         public virtual Car? Car { get; set; }
 
-        public int PriceOfOrder { get; set; }
+        public int PriceOfOrder = 10;
 
         List<PlacementOfOrder> PlacementsOfOrder { get; set; }
         public virtual ICollection<PlacementOfOrder>? PlacementOfOrders { get; set; }

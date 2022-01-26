@@ -19,7 +19,8 @@ namespace Shop_Application.Models
         [Required(ErrorMessage = "Wprowadz opis auta")]
         [StringLength(2000)]
         public string CarDescription { get; set; }
-        public int PriceOfCar { get; set; }
+        private int _PriceOfCar = 5;
+        public int PriceOfCar { get { return this._PriceOfCar; } set { this._PriceOfCar = value; } }
         public bool WearOfCar { get; set; }
         public bool Hide { get; set; }
         [ForeignKey("Category")]

@@ -24,6 +24,7 @@ namespace Shop_Application.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Car.Include(c => c.Category);
+            Console.WriteLine(1);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -62,12 +63,10 @@ namespace Shop_Application.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 _context.Add(car);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "NameCategory", car.CategoryId);
             return View(car);
         }
 
