@@ -12,7 +12,11 @@
 <table class="table">
     <thead>
         <tr>
+             <th>
+           @Html.DisplayNameFor(model => model.NameOfPicture)
+            </th>
             <th>
+
                 @Html.DisplayNameFor(model => model.CarMark)
             </th>
             <th>
@@ -21,9 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.YearOfProduction)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NameOfPicture)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.CarDescription)
             </th>
@@ -45,7 +47,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+           
             <td>
+                <div class="image">  
+                <img src="@item.NameOfPicture"/> 
+                </div>
+
+             
+                
+            </td>
+             <td>
                 @Html.DisplayFor(modelItem => item.CarMark)
             </td>
             <td>
@@ -54,9 +65,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.YearOfProduction)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameOfPicture)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.CarDescription)
             </td>
