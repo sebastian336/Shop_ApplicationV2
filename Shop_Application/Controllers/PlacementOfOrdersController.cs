@@ -47,10 +47,20 @@ namespace Shop_Application.Controllers
         }
 
         // GET: PlacementOfOrders/Create
-        public IActionResult Create()
+        public IActionResult Create(String order)
         {
-            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "City");
-            return View();
+            int.TryParse(order, out int iOrderId);
+            PlacementOfOrder Placement = new PlacementOfOrder();
+            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "NameCustomer");
+ 
+            Placement.Order = _context.Order.FirstOrDefault(Order => Order.Id == iOrderId);
+
+
+            Placement.OrderId = iOrderId;
+
+            Placement.PriceOfBuy = Placement.Order.PriceOfOrder+300;
+
+            return View(Placement);
         }
 
         // POST: PlacementOfOrders/Create
@@ -66,7 +76,7 @@ namespace Shop_Application.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "City", placementOfOrder.OrderId);
+            ViewData["OrderId"] = new SelectList(_context.Order, "Id", "NameCustomer", placementOfOrder.OrderId);
             return View(placementOfOrder);
         }
 
