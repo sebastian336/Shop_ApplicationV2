@@ -9,9 +9,16 @@ body {
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em;
     font-size: 16px;
+
+    
   
 }
 
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 10em
+}
 
 html {
     font-size: 16px;
@@ -20,28 +27,29 @@ html {
 
 
 html {
-    position: relative;
+    position: center;
     min-height: 100%;
     
 }
 
 
 img {
-    height: auto%;
-    width: 170%;
-    margin: -30px;
-    position: center;
+    height: auto;
+    width: 150%;
+    margin-left: -60px;
 }
 
 .image {
-    height: 150px;
-    width: 150px;
+    height: 140px;
+    width: 140px;
+    
 }
 
 .table {
-    
     color: white;
-    text-shadow: black 0.1em 0.1em 0.2em
+    text-shadow: black 0.1em 0.1em 0.2em ;
+    position: center;
+
 }
 
 .form-control {
