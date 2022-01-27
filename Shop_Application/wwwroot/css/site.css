@@ -1,18 +1,76 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+    background-image: url("https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-size: 16px;
+  
+}
+
+
+html {
+    font-size: 16px;
+    position: center;
+}
+
+
+html {
+    position: relative;
+    min-height: 100%;
+    
+}
+
+
+img {
+    height: auto%;
+    width: 170%;
+    margin: -30px;
+    position: center;
+}
+
+.image {
+    height: 150px;
+    width: 150px;
+}
+
+.table {
+    
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: #ffffff3b;
+    background-clip: padding-box;
+    border: 1px solid #000000;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.bg-white {
+    background-image: url("https://images.vectorhq.com/images/previews/f14/grey-real-carbon-fiber-background-vector-graphic-407652.jpg");
+    /* background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important; */
+}
+.navbar-light .navbar-brand {
+    color: white;
+}
+
+.text-dark {
+    font-family: Arial;
+    font-size: 22px;
+    text-shadow: white 0.1em 0.1em 0.01em
 }

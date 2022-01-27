@@ -16,6 +16,7 @@ namespace Shop_Application.Models
         public string CarModel { get; set; }
         public DateTime YearOfProduction { get; set; }
         public string NameOfPicture { get; set; }
+
         [Required(ErrorMessage = "Wprowadz opis auta")]
         [StringLength(2000)]
         public string CarDescription { get; set; }

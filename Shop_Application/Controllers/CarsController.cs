@@ -66,6 +66,7 @@ namespace Shop_Application.Controllers
                 _context.Add(car);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
             }
             return View(car);
         }
