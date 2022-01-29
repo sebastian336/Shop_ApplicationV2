@@ -60,7 +60,7 @@ namespace Shop_Application.Controllers
 
             Placement.OrderId = iOrderId;
 
-            Placement.PriceOfBuy = Placement.Order.PriceOfOrder+300;
+            Placement.PriceOfBuy = Placement.Order.PriceOfOrder;
 
             return View(Placement);
         }
