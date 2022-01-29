@@ -86,7 +86,7 @@ namespace Shop_Application.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription", car.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "NameCategory", car.CategoryId);
             return View(car);
         }
 
@@ -122,7 +122,7 @@ namespace Shop_Application.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "CategoryDescription", car.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "NameCategory", car.CategoryId);
             return View(car);
         }
 
